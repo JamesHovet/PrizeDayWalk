@@ -1,1 +1,53 @@
-this is the list
+<html>
+    {% load staticfiles %}
+    <head>
+        <meta charset="utf-8">
+        <title>{{title}}</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'app/content/listStyles.css' %}" />
+    </head>
+
+    <style>
+        table{
+            display: inline;
+        }
+        tr{
+            height: 340px;
+        }
+        td{
+            text-align: center;
+        }
+        #main{
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            width: 90%;
+            min-width: 1030px;
+        }
+    </style>
+
+    <div id="main">
+        <table>
+        {% for a,b,c in zipped %}
+            <tr>
+                {% with a.StudentID|stringformat:"s" as id %}
+                    {% with 'appMain/img/'|add:id|add:'.jpg' as image_static %}
+                        <td><img class="resultsImg" src="{% static image_static %}"><h4 class="name">{{a.Name}}</h4></td>
+                    {% endwith %}
+                {% endwith %}
+                {% with b.StudentID|stringformat:"s" as id %}
+                    {% with 'appMain/img/'|add:id|add:'.jpg' as image_static %}
+                        <td><img class="resultsImg" src="{% static image_static %}"><h4 class="name">{{b.Name}}</h4></td>
+                    {% endwith %}
+                {% endwith %}
+                {% if c != None %}
+                    {% with c.StudentID|stringformat:"s" as id %}
+                        {% with 'appMain/img/'|add:id|add:'.jpg' as image_static %}
+                            <td><img class="resultsImg" src="{% static image_static %}"><h4 class="name">{{c.Name}}</h4></td>
+                        {% endwith %}
+                    {% endwith %}
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+</html>

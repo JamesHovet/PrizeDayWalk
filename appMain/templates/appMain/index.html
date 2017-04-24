@@ -1,2 +1,21 @@
-Hello World
-index
+<html lang="en">
+    {% load staticfiles %}
+
+    <head>
+        <meta charset="utf-8">
+        <title>{{title}}</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'appMain/content/indexStyles.css' %}">
+    </head>
+
+    <h1>Who will you walk with on Prize Day?</h1>
+
+    <h2>What form are you in?</h2>
+    <div id="forms">
+        <a href=/list?form=21>II</a>
+        <a href=/list?form=20>III</a>
+        <a href=/list?form=19>IV</a>
+        <a href=/list?form=18>V</a>
+        <a href=/list?form=17>VI</a>
+    </div>
+
+</html>
